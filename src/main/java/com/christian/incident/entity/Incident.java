@@ -1,4 +1,4 @@
-package entity;
+package com.christian.incident.entity;
 
 import jakarta.persistence.*;
 import lombok.Getter;
