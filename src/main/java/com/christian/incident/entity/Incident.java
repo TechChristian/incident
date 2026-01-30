@@ -8,6 +8,7 @@ import org.hibernate.annotations.CreationTimestamp;
 
 import java.io.Serializable;
 import java.time.LocalDateTime;
+import java.util.UUID;
 
 @NoArgsConstructor
 @Getter
@@ -16,18 +17,27 @@ import java.time.LocalDateTime;
 @Table(name = "incident")
 
 public class Incident implements Serializable {
-    @id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id")
-    private Long id;
+    @Id
+    @GeneratedValue(strategy = GenerationType.UUID)
+    @Column(name = "id", updatable = false, nullable = false)
+    private UUID id;
 
-    @Column(name = "nameIncident")
+    @Column(name = "incident", nullable = false, length = 100)
     private String incident;
 
-    @Column(name = "location")
+    @Column(name = "location", nullable = false)
     private String location;
+
+    @Enumerated(EnumType.STRING)
+    @Column(name = "status", nullable = false)
+    private IncidentStatus status;
 
     @CreationTimestamp
     @Column(name = "created_at", updatable = false)
     private LocalDateTime createdAt;
+
+    @PrePersist
+    private void prePersist(){
+        this.status = IncidentStatus.OPEN;
+    }
 }
