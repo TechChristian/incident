@@ -5,7 +5,9 @@ import com.christian.incident.entity.Incident;
 import com.christian.incident.service.IncidentService;
 import com.christian.incident.web.dto.mapper.IncidentMapper;
 import com.christian.incident.web.dto.request.IncidentCreateDto;
+import com.christian.incident.web.dto.request.IncidentStatusUpdateDto;
 import com.christian.incident.web.dto.response.IncidentResponseDto;
+import com.christian.incident.web.dto.response.MessageResponseDto;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -36,4 +38,13 @@ public class IncidentController {
         List<Incident> incidents = incidentService.listIncident();
         return ResponseEntity.ok(IncidentMapper.listDto(incidents));
     }
+
+    @PatchMapping("/{id}/status")
+    public ResponseEntity<MessageResponseDto> updateStatus (@PathVariable UUID id, @Valid @RequestBody IncidentStatusUpdateDto dto){
+       incidentService.updateStatus(id, dto.status());
+        return ResponseEntity.ok(
+                new MessageResponseDto("Your status has been successfully updated.")
+        );
+    }
+
 }
