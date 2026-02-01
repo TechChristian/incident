@@ -10,6 +10,8 @@ public record IncidentResponseDto(
 
          String location,
 
+         String status,
+
          LocalDateTime createdAt
         ) {
 }

@@ -7,7 +7,6 @@ import jakarta.validation.constraints.Size;
 public record IncidentCreateDto(
 
         @NotBlank(message = "It is necessary to describe the incident.")
-
         @Size(min = 6, max= 100, message = "The incident description must be between 6 and 100 characters.")
         String incident,
 
