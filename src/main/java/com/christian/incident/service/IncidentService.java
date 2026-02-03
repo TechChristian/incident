@@ -37,6 +37,7 @@ public class IncidentService {
         return incidentRepository.save(incident);
     }
 
+
     @Transactional(readOnly = true)
     public List<Incident> listIncident(){
         return incidentRepository.findAll();

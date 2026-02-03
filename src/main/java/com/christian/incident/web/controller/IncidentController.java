@@ -46,5 +46,4 @@ public class IncidentController {
                 new MessageResponseDto("Your status has been successfully updated.")
         );
     }
-
 }
