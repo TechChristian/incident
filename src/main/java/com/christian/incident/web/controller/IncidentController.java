@@ -46,4 +46,10 @@ public class IncidentController {
                 new MessageResponseDto("Your status has been successfully updated.")
         );
     }
+
+    @GetMapping("/{id}")
+    public ResponseEntity<IncidentResponseDto> searchIncidentId (@PathVariable UUID id) {
+        Incident incident = incidentService.searchById(id);
+        return ResponseEntity.ok(IncidentMapper.toResponseDto(incident));
+    }
 }

@@ -43,4 +43,10 @@ public class IncidentService {
         return incidentRepository.findAll();
     }
 
+    @Transactional(readOnly = true)
+    public Incident searchById(UUID id) {
+       return incidentRepository.findById(id).orElseThrow(
+                () -> new EntityNotFoundException("incident not found by ID ")
+        );
+    }
 }
