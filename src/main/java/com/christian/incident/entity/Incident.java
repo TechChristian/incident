@@ -39,5 +39,9 @@ public class Incident implements Serializable {
     @PrePersist
     private void prePersist(){
         this.status = IncidentStatus.OPEN;
+        this.createdAt = LocalDateTime.now();
     }
+
+
+
 }
