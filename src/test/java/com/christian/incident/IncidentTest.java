@@ -57,16 +57,20 @@ public class IncidentTest {
     org.assertj.core.api.Assertions.assertThat(responseBody).isNotNull();
     org.assertj.core.api.Assertions.assertThat(responseBody.getStatus()).isEqualTo(422);
 
+    }
+
     //Testa - Se o Incident tem 6 caracteres.
-    responseBody = testClient
-            .post()
-            .uri("/api/v1/incident")
-            .contentType(MediaType.APPLICATION_JSON)
-            .bodyValue(new IncidentCreateDto("lampa", "Apartamento 610"))
-            .exchange()
-            .expectStatus().isEqualTo(422)
-            .expectBody(ErrorMessage.class)
-            .returnResult().getResponseBody();
+    @Test
+    public void createIncident_WithIncidentLessThan6Characters_ReturnCode422(){
+        ErrorMessage responseBody = testClient
+                .post()
+                .uri("/api/v1/incident")
+                .contentType(MediaType.APPLICATION_JSON)
+                .bodyValue(new IncidentCreateDto("lampa", "Apartamento 610"))
+                .exchange()
+                .expectStatus().isEqualTo(422)
+                .expectBody(ErrorMessage.class)
+                .returnResult().getResponseBody();
 
         org.assertj.core.api.Assertions.assertThat(responseBody).isNotNull();
         org.assertj.core.api.Assertions.assertThat(responseBody.getStatus()).isEqualTo(422);
