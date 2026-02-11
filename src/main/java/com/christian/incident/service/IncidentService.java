@@ -25,15 +25,17 @@ public class IncidentService {
         );
 
         if (incident.getStatus() == newStatus) {
-            throw new IllegalStateException("Incident already open");
+            throw new IllegalStateException("An incident with this status already exists.");
         }
         incident.setStatus(newStatus);
-
         return incident;
     }
 
     @Transactional
     public Incident save(Incident incident){
+        if(incidentRepository.existsByLocationAndStatus(incident.getLocation(), IncidentStatus.OPEN)){
+            throw new IllegalStateException("An open incident already exists at this location");
+        }
         return incidentRepository.save(incident);
     }
 
