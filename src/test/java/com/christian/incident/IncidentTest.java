@@ -7,12 +7,14 @@ import com.christian.incident.web.exception.ErrorMessage;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.autoconfigure.web.reactive.AutoConfigureWebTestClient;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.MediaType;
 import org.springframework.test.context.jdbc.Sql;
 import org.springframework.test.web.reactive.server.WebTestClient;
 
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
+@AutoConfigureWebTestClient
 @Sql(scripts = "/sql/Incident/incident-insert.sql", executionPhase = Sql.ExecutionPhase.BEFORE_TEST_METHOD)
 @Sql(scripts = "/sql/Incident/incident-delete.sql", executionPhase = Sql.ExecutionPhase.AFTER_TEST_METHOD)
 public class IncidentTest {
@@ -26,7 +28,7 @@ public class IncidentTest {
                 .post()
                 .uri("/api/v1/incident")
                 .contentType(MediaType.APPLICATION_JSON)
-                .bodyValue(new IncidentCreateDto("Lampada Queimada", "Apartamento 610"))
+                .bodyValue(new IncidentCreateDto("Lampada Queimada", "Apartamento 99"))
                 .exchange()
                 .expectStatus().isCreated()
                 .expectBody(IncidentResponseDto.class)
@@ -36,7 +38,7 @@ public class IncidentTest {
         Assertions.assertThat(responseBody).isNotNull();
         Assertions.assertThat(responseBody.id()).isNotNull();
         Assertions.assertThat(responseBody.incident()).isEqualTo("Lampada Queimada");
-        Assertions.assertThat(responseBody.location()).isEqualTo("Apartamento 610");
+        Assertions.assertThat(responseBody.location()).isEqualTo("Apartamento 99");
         Assertions.assertThat(responseBody.status()).isEqualTo("OPEN");
         Assertions.assertThat(responseBody.createdAt()).isNotNull();
     }
