@@ -1,4 +1,8 @@
-# ⚠️ API REST - Incidentes
+# ⚠️ Incident API
+
+API REST para gerenciamento de incidentes, desenvolvida com Java 21 e Spring Boot.
+
+Projeto focado em boas práticas de arquitetura em camadas, Docker e persistência com MySQL.
 
 ### Tecnologias
 
@@ -25,6 +29,11 @@ endpoints disponíveis nesta aplicação:
 | `GET` | `/api/v1/incident` | Recurso de listagem de incidentes |
 | `PUT` | `/api/v1/incident/{id}/status` | Recurso de atualização de status do incidente |
 | `GET` | `/api/v1/incident/{id}` | Recurso para listar incidente pelo ID |
+
+### Passos
+
+1. Clone o repositório
+2. Crie o arquivo `.env` baseado no `.env.example`
 
 ## 🐳 Rodando com Docker
 
