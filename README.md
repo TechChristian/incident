@@ -11,6 +11,7 @@ Projeto focado em boas práticas de arquitetura em camadas, Docker e persistênc
 ![Spring Web](https://img.shields.io/badge/Spring_Web-2D2D2D?style=flat&logo=spring&logoColor=6DB33F)
 ![Spring Validation](https://img.shields.io/badge/Spring_Validation-2D2D2D?style=flat&logo=spring&logoColor=6DB33F)
 ![Spring Data JPA](https://img.shields.io/badge/Spring_Data_JPA-2D2D2D?style=flat&logo=spring&logoColor=6DB33F)
+![JUnit 5](https://img.shields.io/badge/JUnit_5-2D2D2D?style=flat&logo=junit5&logoColor=25A162)
 ![WebTestClient](https://img.shields.io/badge/WebTestClient-2D2D2D?style=flat&logo=spring&logoColor=6DB33F)
 ![MySQL](https://img.shields.io/badge/MySQL-2D2D2D?style=flat&logo=mysql&logoColor=4479A1)
 ![H2 Database](https://img.shields.io/badge/H2_Database-2D2D2D?style=flat&logo=sqlite&logoColor=white)
