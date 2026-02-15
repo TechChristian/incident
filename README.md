@@ -31,10 +31,12 @@ endpoints disponíveis nesta aplicação:
 | `PUT` | `/api/v1/incident/{id}/status` | Recurso de atualização de status do incidente |
 | `GET` | `/api/v1/incident/{id}` | Recurso para listar incidente pelo ID |
 
-### Passos
 
-1. Clone o repositório
-2. Crie o arquivo `.env` baseado no `.env.example`
+## 🔐 Configuração
+
+1. Copie o arquivo `.env.example`
+2. Renomeie para `.env`
+3. Preencha com suas próprias credenciais
 
 ## 🐳 Rodando com Docker
 
