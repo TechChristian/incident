@@ -1,7 +1,7 @@
 package com.christian.incident.repository;
 
 import com.christian.incident.entity.Incident;
-import com.christian.incident.entity.IncidentStatus;
+import com.christian.incident.entity.enums.IncidentStatus;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.UUID;

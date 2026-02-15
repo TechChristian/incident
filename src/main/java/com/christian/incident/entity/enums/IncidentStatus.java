@@ -1,4 +1,4 @@
-package com.christian.incident.entity;
+package com.christian.incident.entity.enums;
 
 public enum IncidentStatus {
     OPEN,

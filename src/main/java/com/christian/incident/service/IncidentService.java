@@ -1,7 +1,7 @@
 package com.christian.incident.service;
 
 import com.christian.incident.entity.Incident;
-import com.christian.incident.entity.IncidentStatus;
+import com.christian.incident.entity.enums.IncidentStatus;
 import com.christian.incident.repository.IncidentRepository;
 import jakarta.persistence.EntityNotFoundException;
 import lombok.RequiredArgsConstructor;

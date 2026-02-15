@@ -1,5 +1,6 @@
 package com.christian.incident.entity;
 
+import com.christian.incident.entity.enums.IncidentStatus;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -41,7 +42,5 @@ public class Incident implements Serializable {
         this.status = IncidentStatus.OPEN;
         this.createdAt = LocalDateTime.now();
     }
-
-
 
 }
