@@ -1,4 +1,4 @@
-package com.christian.incident.web.dto.response;
+package com.christian.incident.web.dto.response.incidentDto;
 
 import java.time.LocalDateTime;
 import java.util.UUID;
@@ -12,6 +12,9 @@ public record IncidentResponseDto(
 
          String status,
 
-         LocalDateTime createdAt
+         LocalDateTime createdAt,
+
+         UserIncidentReportDto user
+
         ) {
 }

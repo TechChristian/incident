@@ -1,4 +1,4 @@
-package com.christian.incident.web.dto.request;
+package com.christian.incident.web.dto.request.incidentDto;
 
 import com.christian.incident.entity.enums.IncidentStatus;
 import jakarta.validation.constraints.NotNull;

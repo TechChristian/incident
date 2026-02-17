@@ -1,8 +1,8 @@
 package com.christian.incident;
 
 
-import com.christian.incident.web.dto.request.IncidentCreateDto;
-import com.christian.incident.web.dto.response.IncidentResponseDto;
+import com.christian.incident.web.dto.request.incidentDto.IncidentCreateDto;
+import com.christian.incident.web.dto.response.incidentDto.IncidentResponseDto;
 import com.christian.incident.web.exception.ErrorMessage;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;

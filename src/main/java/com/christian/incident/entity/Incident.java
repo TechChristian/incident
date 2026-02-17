@@ -37,10 +37,13 @@ public class Incident implements Serializable {
     @Column(name = "created_at", updatable = false)
     private LocalDateTime createdAt;
 
+    @ManyToOne
+    @JoinColumn(name= "user_id", nullable = false)
+    private User user;
+
     @PrePersist
     private void prePersist(){
         this.status = IncidentStatus.OPEN;
-        this.createdAt = LocalDateTime.now();
     }
 
 }
