@@ -12,10 +12,6 @@ public enum Roles {
         this.role = role;
     }
 
-    public String getRole() {
-        return role;
-    }
-
     @JsonCreator
     public static Roles from(String value){
         return Roles.valueOf(value.toUpperCase());

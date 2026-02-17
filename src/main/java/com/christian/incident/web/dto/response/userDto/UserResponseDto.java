@@ -1,4 +1,5 @@
 package com.christian.incident.web.dto.response.userDto;
+import com.christian.incident.entity.enums.Roles;
 
 import java.util.UUID;
 
@@ -9,6 +10,9 @@ public record UserResponseDto(
 
         String email,
 
-        String phone
+        String phone,
+
+        Roles role
+
 ) {
 }
