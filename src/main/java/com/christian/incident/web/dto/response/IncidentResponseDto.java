@@ -1,4 +1,4 @@
-package com.christian.incident.web.dto.response.incidentDto;
+package com.christian.incident.web.dto.response;
 
 import java.time.LocalDateTime;
 import java.util.UUID;

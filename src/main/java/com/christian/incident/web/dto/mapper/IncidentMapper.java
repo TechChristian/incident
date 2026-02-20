@@ -1,9 +1,9 @@
 package com.christian.incident.web.dto.mapper;
 
 import com.christian.incident.entity.Incident;
-import com.christian.incident.web.dto.request.incidentDto.IncidentCreateDto;
-import com.christian.incident.web.dto.response.incidentDto.IncidentResponseDto;
-import com.christian.incident.web.dto.response.incidentDto.UserIncidentReportDto;
+import com.christian.incident.web.dto.request.IncidentCreateDto;
+import com.christian.incident.web.dto.response.IncidentResponseDto;
+import com.christian.incident.web.dto.response.UserIncidentReportDto;
 
 import java.util.List;
 
@@ -26,7 +26,7 @@ public class IncidentMapper {
                 incident.getUser().getUsername(),
                 incident.getUser().getEmail(),
                 incident.getUser().getPhone(),
-                incident.getUser().getRoles().name()
+                incident.getUser().getRole().name()
 
         );
 

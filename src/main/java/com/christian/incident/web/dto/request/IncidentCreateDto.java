@@ -1,4 +1,4 @@
-package com.christian.incident.web.dto.request.incidentDto;
+package com.christian.incident.web.dto.request;
 
 
 import jakarta.validation.constraints.NotBlank;

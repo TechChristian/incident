@@ -2,7 +2,6 @@ package com.christian.incident.entity;
 
 import com.christian.incident.entity.enums.Roles;
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -10,13 +9,11 @@ import lombok.Setter;
 import java.io.Serializable;
 import java.util.UUID;
 
-
 @NoArgsConstructor
 @Getter
 @Setter
 @Entity
-@Table(name = "user")
-
+@Table(name = "users")
 public class User implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
@@ -35,7 +32,7 @@ public class User implements Serializable {
     @Column(name = "phone", length = 100)
     private String phone;
 
-    @Column(name = "roles", nullable = false)
+    @Column(name = "role")
     @Enumerated(EnumType.STRING)
-    private Roles roles;
+    private Roles role;
 }

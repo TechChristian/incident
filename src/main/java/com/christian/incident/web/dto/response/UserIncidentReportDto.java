@@ -1,4 +1,4 @@
-package com.christian.incident.web.dto.response.incidentDto;
+package com.christian.incident.web.dto.response;
 
 public record UserIncidentReportDto(
         String username,

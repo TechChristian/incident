@@ -15,8 +15,7 @@ import java.util.UUID;
 @Getter
 @Setter
 @Entity
-@Table(name = "incident")
-
+@Table(name= "incident")
 public class Incident implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
