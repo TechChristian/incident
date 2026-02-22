@@ -1,20 +1,17 @@
 package com.christian.incident.web.dto.mapper;
 import com.christian.incident.web.dto.UserDto;
-import com.christian.incident.web.dto.response.UserResponseDto;
 import com.christian.incident.entity.User;
-
-import com.christian.incident.web.dto.request.UserCreateDto;
 
 public class UserMapper {
 
-    public static User toEntity (UserDto.Create userDto){
+    public static User toEntity (UserDto.Create dto){
 
         User user = new User();
 
-        user.setUsername(userDto.username());
-        user.setEmail(userDto.email());
-        user.setPassword(userDto.password());
-        user.setPhone(userDto.phone());
+        user.setUsername(dto.username());
+        user.setEmail(dto.email());
+        user.setPassword(dto.password());
+        user.setPhone(dto.phone());
         return user;
     }
 

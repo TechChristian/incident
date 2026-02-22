@@ -16,6 +16,7 @@ public class UserService {
 
     @Transactional
     public User save(User user){
+
     if(userRepository.existsByEmail(user.getEmail())){
         throw new EmailAlreadyExistsException("Email already registered!");
     }

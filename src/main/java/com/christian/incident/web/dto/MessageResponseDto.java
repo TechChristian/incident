@@ -1,4 +1,4 @@
-package com.christian.incident.web.dto.response;
+package com.christian.incident.web.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

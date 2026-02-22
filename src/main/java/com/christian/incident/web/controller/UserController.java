@@ -5,8 +5,6 @@ import com.christian.incident.entity.User;
 import com.christian.incident.service.UserService;
 import com.christian.incident.web.dto.UserDto;
 import com.christian.incident.web.dto.mapper.UserMapper;
-import com.christian.incident.web.dto.request.UserCreateDto;
-import com.christian.incident.web.dto.response.UserResponseDto;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
