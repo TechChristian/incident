@@ -44,4 +44,11 @@ public class UserController {
                         "Your info has been sucessfullly updated."
                 ));
     }
+
+    @GetMapping("/{id}")
+    public ResponseEntity<UserDto.Response> searchUser (@PathVariable UUID id){
+          User user = userService.searchUserById(id);
+          return
+                  ResponseEntity.ok(UserMapper.toResponseDto(user));
+    }
 }

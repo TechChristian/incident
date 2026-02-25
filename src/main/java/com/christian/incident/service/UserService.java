@@ -46,4 +46,12 @@ public class UserService {
         }
             return user;
     }
+
+    @Transactional(readOnly = true)
+    public User searchUserById(UUID id){
+        return
+                userRepository.findById(id).orElseThrow(
+                        () -> new EntityNotFoundException("User not found by ID.")
+                );
+    }
 }
