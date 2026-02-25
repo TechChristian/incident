@@ -37,4 +37,8 @@ public class UserDto {
             Roles role
     ) {
     }
+    public record Update(
+            String phone,
+            String email
+    ){}
 }

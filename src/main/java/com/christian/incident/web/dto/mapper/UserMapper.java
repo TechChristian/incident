@@ -2,6 +2,9 @@ package com.christian.incident.web.dto.mapper;
 import com.christian.incident.web.dto.UserDto;
 import com.christian.incident.entity.User;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
 public class UserMapper {
 
     public static User toEntity (UserDto.Create dto){
@@ -24,5 +27,12 @@ public class UserMapper {
                 user.getPhone(),
                 user.getRole()
         );
+    }
+
+    public static List<UserDto.Response> listDto(List<User> userList){
+        return userList
+                .stream()
+                .map(UserMapper::toResponseDto)
+                .collect(Collectors.toList());
     }
 }
