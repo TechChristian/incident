@@ -2,6 +2,7 @@ package com.christian.incident.web.dto.mapper;
 
 import com.christian.incident.entity.Incident;
 import com.christian.incident.web.dto.IncidentDto;
+import com.christian.incident.web.dto.UserDto;
 
 import java.util.List;
 
@@ -18,29 +19,32 @@ public class IncidentMapper {
 
     //Entity -> Response DTO
     public static IncidentDto.Response toResponseDto(Incident incident) {
-    /*
-        UserIncidentReportDto userDto = new UserIncidentReportDto(
-                incident.getUser().getUsername(),
-                incident.getUser().getEmail(),
-                incident.getUser().getPhone(),
-                incident.getUser().getRole().name()
 
+        var user = incident.getUser();
+
+        UserDto.Response userDto = new UserDto.Response(
+                user.getId(),
+                user.getUsername(),
+                user.getEmail(),
+                user.getPhone(),
+                user.getRole()
         );
-*/
+
         return new IncidentDto.Response(
                 incident.getId(),
                 incident.getIncident(),
                 incident.getLocation(),
                 incident.getStatus().name(),
-                incident.getCreatedAt()
+                incident.getCreatedAt(),
+                userDto
         );
     }
 
     // Mapeamento para Listagem de Incidentes.
-    public static List<IncidentDto.Response> listDto (List<Incident> incidentList){
+    public static List<IncidentDto.Response> listDto(List<Incident> incidentList) {
         return incidentList
                 .stream()
-                .map(IncidentMapper :: toResponseDto)
-                .collect(Collectors.toList());
+                .map(IncidentMapper::toResponseDto)
+                .toList();
     }
 }

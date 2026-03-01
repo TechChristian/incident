@@ -10,6 +10,8 @@ import java.util.UUID;
 
 public class IncidentDto {
     public record Create(
+            @NotNull(message = "User ID is required.")
+            UUID userId,
 
             @NotBlank(message = "It is necessary to describe the incident.")
             @Size(min = 6, max= 100, message = "The incident description must be between 6 and 100 characters.")
@@ -35,7 +37,8 @@ public class IncidentDto {
 
             String status,
 
-            LocalDateTime createdAt
+            LocalDateTime createdAt,
 
+            UserDto.Response user
     ){}
 }

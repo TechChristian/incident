@@ -7,6 +7,8 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.UUID;
 
 @NoArgsConstructor
@@ -20,7 +22,7 @@ public class User implements Serializable {
     @Column(name = "id", updatable = false, nullable = false, unique = true)
     private UUID id;
 
-    @Column(name = "username", updatable = false, length = 100)
+    @Column(name = "username", length = 100)
     private String username;
 
     @Column(name = "email", nullable = false, unique = true, length = 100)
@@ -29,10 +31,11 @@ public class User implements Serializable {
     @Column(name = "password", nullable = false, length = 200)
     private String password;
 
-    @Column(name = "phone", length = 100)
+    @Column(name = "phone", length = 20)
     private String phone;
 
     @Column(name = "role")
     @Enumerated(EnumType.STRING)
     private Roles role;
+
 }

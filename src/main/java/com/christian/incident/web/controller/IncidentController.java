@@ -42,7 +42,7 @@ public class IncidentController {
 
     @PostMapping
     public ResponseEntity<IncidentDto.Response> createIncident (@Valid @RequestBody IncidentDto.Create create){
-        Incident incident = incidentService.save(IncidentMapper.toEntity(create));
+        Incident incident = incidentService.save(create);
         IncidentDto.Response response =
                 IncidentMapper.toResponseDto(incident);
         return ResponseEntity.status(HttpStatus.CREATED).body(response);
