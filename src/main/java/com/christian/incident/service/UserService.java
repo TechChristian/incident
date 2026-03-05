@@ -1,6 +1,7 @@
 package com.christian.incident.service;
 import com.christian.incident.entity.enums.Roles;
 import com.christian.incident.exception.EmailAlreadyExistsException;
+import com.christian.incident.exception.PasswordInvalidException;
 import com.christian.incident.web.dto.UserDto;
 import jakarta.persistence.EntityNotFoundException;
 import lombok.Getter;
@@ -45,6 +46,18 @@ public class UserService {
             user.setEmail(dto.email());
         }
             return user;
+    }
+    @Transactional
+    public User updatePassword(UUID id, String currentPassword, String newPassword, String confirmPassword){
+        if(!newPassword.equals(confirmPassword) ){
+            throw new PasswordInvalidException("invalid password");
+        }
+        User user = searchUserById(id);
+        if(!user.getPassword().equals(currentPassword)){
+            throw new PasswordInvalidException("The current password does not match. ");
+        }
+
+        return user;
     }
 
     @Transactional(readOnly = true)

@@ -4,6 +4,7 @@ import com.christian.incident.entity.enums.Roles;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
+import org.springframework.context.annotation.Bean;
 
 import java.util.UUID;
 
@@ -41,5 +42,18 @@ public class UserDto {
     public record Update(
             String phone,
             String email
+    ){}
+    public record UpdatePassword (
+      @NotBlank
+      @Size(min = 6, max = 10)
+      String currentPassword,
+
+      @NotBlank
+      @Size(min = 6, max = 10)
+      String newPassword,
+
+      @NotBlank
+      @Size(min = 6, max = 10)
+      String confirmPassword
     ){}
 }

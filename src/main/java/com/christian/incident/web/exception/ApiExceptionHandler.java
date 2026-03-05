@@ -1,6 +1,7 @@
 package com.christian.incident.web.exception;
 
 import com.christian.incident.exception.EmailAlreadyExistsException;
+import com.christian.incident.exception.PasswordInvalidException;
 import jakarta.persistence.EntityNotFoundException;
 import jakarta.servlet.http.HttpServletRequest;
 import lombok.extern.slf4j.Slf4j;
@@ -47,7 +48,16 @@ public class ApiExceptionHandler{
                 .contentType(MediaType.APPLICATION_JSON)
                 .body(new ErrorMessage(request, HttpStatus.INTERNAL_SERVER_ERROR, ex.getMessage()));
     }
+    @ExceptionHandler(PasswordInvalidException.class)
+    public ResponseEntity<ErrorMessage> passwordInvalidException (RuntimeException ex, HttpServletRequest request){
+        log.error("Api Error -", ex);
+        return
+                ResponseEntity
+                        .status(HttpStatus.BAD_REQUEST)
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .body(new ErrorMessage(request, HttpStatus.BAD_REQUEST, ex.getMessage()));
 
+    }
     @ExceptionHandler(HttpMessageNotReadableException.class)
     public ResponseEntity<ErrorMessage> httpMessageNotReadableException (HttpMessageNotReadableException ex, HttpServletRequest request){
 
