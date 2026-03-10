@@ -56,7 +56,7 @@ public class UserService {
         if(!user.getPassword().equals(currentPassword)){
             throw new PasswordInvalidException("The current password does not match. ");
         }
-
+        user.setPassword(newPassword);
         return user;
     }
 

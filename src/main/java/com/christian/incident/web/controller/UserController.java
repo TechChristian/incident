@@ -44,6 +44,17 @@ public class UserController {
                         "Your info has been sucessfullly updated."
                 ));
     }
+    @PatchMapping("/{id}/password")
+    public ResponseEntity<MessageResponseDto> updatePassword (@PathVariable UUID id, @Valid @RequestBody UserDto.UpdatePassword dto){
+        userService.updatePassword(
+                id,
+                dto.currentPassword(),
+                dto.newPassword(),
+                dto.confirmPassword()
+        );
+        return ResponseEntity.noContent().build();
+    }
+
 
     @GetMapping("/{id}")
     public ResponseEntity<UserDto.Response> searchUser (@PathVariable UUID id){
