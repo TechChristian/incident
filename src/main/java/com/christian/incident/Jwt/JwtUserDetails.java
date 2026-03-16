@@ -5,7 +5,7 @@ import org.springframework.security.core.userdetails.User;
 import java.util.UUID;
 
 public class JwtUserDetails extends User {
-    private com.christian.incident.entity.User user;
+    private final com.christian.incident.entity.User user;
 
     public JwtUserDetails(com.christian.incident.entity.User user){
         super(
@@ -13,6 +13,7 @@ public class JwtUserDetails extends User {
                 user.getPassword(),
                 AuthorityUtils.createAuthorityList(user.getRole().name())
         );
+        this.user = user;
     }
     public UUID getId(){
         return this.user.getId();

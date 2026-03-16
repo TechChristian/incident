@@ -67,4 +67,18 @@ public class UserService {
                         () -> new EntityNotFoundException("User not found by ID.")
                 );
     }
+
+    @Transactional(readOnly = true)
+    public User searchByUsername(String username) {
+        return
+                userRepository.findByUsername(username).orElseThrow(
+                        () -> new EntityNotFoundException(String.format("User not found: %s ", username))
+                );
+    }
+    @Transactional(readOnly = true)
+
+    public Roles findRoleUsername(String username) {
+        return
+                userRepository.findRoleByUsername(username);
+    }
 }

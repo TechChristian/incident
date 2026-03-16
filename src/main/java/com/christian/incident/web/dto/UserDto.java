@@ -39,10 +39,12 @@ public class UserDto {
             Roles role
     ) {
     }
+
     public record Update(
             String phone,
             String email
     ){}
+
     public record UpdatePassword (
       @NotBlank
       @Size(min = 6, max = 10)
