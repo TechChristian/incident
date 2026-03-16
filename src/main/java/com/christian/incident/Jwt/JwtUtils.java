@@ -31,7 +31,7 @@ public class JwtUtils {
 
     private static Date toExpireDate(Date start) {
         long expirationMillis =
-                (EXPIRE_DAYS * 24L * 60 * 60 * 1000) +
+                        (EXPIRE_DAYS * 24L * 60 * 60 * 1000) +
                         (EXPIRE_HOURS * 60L * 60 * 1000) +
                         (EXPIRE_MINUTES * 60L * 1000);
         return new Date(start.getTime() + expirationMillis);
