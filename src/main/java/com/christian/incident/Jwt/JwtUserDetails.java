@@ -9,7 +9,7 @@ public class JwtUserDetails extends User {
 
     public JwtUserDetails(com.christian.incident.entity.User user){
         super(
-                user.getEmail(),
+                user.getUsername(),
                 user.getPassword(),
                 AuthorityUtils.createAuthorityList(user.getRole().name())
         );

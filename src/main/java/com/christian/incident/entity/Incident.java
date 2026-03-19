@@ -45,3 +45,4 @@ public class Incident implements Serializable {
         this.status = IncidentStatus.OPEN;
     }
 }
+ 

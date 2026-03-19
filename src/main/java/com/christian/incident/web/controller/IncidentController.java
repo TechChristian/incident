@@ -24,7 +24,7 @@ import java.util.UUID;
 
 @RestController
 @RequiredArgsConstructor
-@RequestMapping("api/v1/incident")
+@RequestMapping("/api/v1/incident")
 public class IncidentController {
     private final IncidentService incidentService;
 
