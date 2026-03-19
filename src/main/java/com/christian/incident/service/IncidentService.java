@@ -62,4 +62,5 @@ public class IncidentService {
                 () -> new EntityNotFoundException("incident not found by ID ")
         );
     }
+
 }
