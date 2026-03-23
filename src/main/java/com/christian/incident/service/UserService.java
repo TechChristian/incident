@@ -6,6 +6,7 @@ import com.christian.incident.web.dto.UserDto;
 import jakarta.persistence.EntityNotFoundException;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import com.christian.incident.repository.UserRepository;
 import org.springframework.transaction.annotation.Transactional;
@@ -18,6 +19,7 @@ import java.util.UUID;
 @RequiredArgsConstructor
 public class UserService {
     private final UserRepository userRepository;
+    private final PasswordEncoder passwordEncoder;
 
     @Transactional
     public User save(User user){
@@ -25,6 +27,7 @@ public class UserService {
     if(userRepository.existsByEmail(user.getEmail())){
         throw new EmailAlreadyExistsException("Email already registered!");
     }
+    user.setPassword(passwordEncoder.encode(user.getPassword()));
         return userRepository.save(user);
     }
 
@@ -53,10 +56,10 @@ public class UserService {
             throw new PasswordInvalidException("invalid password");
         }
         User user = searchUserById(id);
-        if(!user.getPassword().equals(currentPassword)){
+        if(!passwordEncoder.matches(currentPassword, user.getPassword())){
             throw new PasswordInvalidException("The current password does not match. ");
         }
-        user.setPassword(newPassword);
+        user.setPassword(passwordEncoder.encode(newPassword));
         return user;
     }
 
