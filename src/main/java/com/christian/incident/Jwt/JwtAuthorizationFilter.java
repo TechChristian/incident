@@ -32,7 +32,7 @@ public class JwtAuthorizationFilter extends OncePerRequestFilter {
             return;
         }
 
-        if( !JwtUtils.isTokenValid(token)){
+        if(!JwtUtils.isTokenValid(token)){
             log.warn("JWT is invalid.");
             filterChain.doFilter(request,response);
             return;
