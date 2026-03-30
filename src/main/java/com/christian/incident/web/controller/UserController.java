@@ -32,6 +32,7 @@ public class UserController {
     }
 
     @GetMapping
+    @PreAuthorize("hasRole('ADMIN')")
     public ResponseEntity<List<UserDto.Response>> listAll(){
         List<User> users = userService.listUser();
         return
@@ -57,7 +58,7 @@ public class UserController {
     }
 
     @GetMapping("/{id}")
-    @PreAuthorize("hasRole('ADMIN') OR (hasRole('USER') AND #id == authentication.principal.id)")
+    @PreAuthorize("hasRole('ADMIN') or (hasRole('USER') or #id == authentication.principal.getId())")
     public ResponseEntity<UserDto.Response> searchUser (@PathVariable UUID id){
           User user = userService.searchUserById(id);
           return

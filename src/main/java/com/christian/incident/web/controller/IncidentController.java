@@ -16,6 +16,7 @@ import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -56,6 +57,7 @@ public class IncidentController {
     }
     )
     @GetMapping
+    @PreAuthorize("hasRole('ADMIN')")
     public ResponseEntity<List<IncidentDto.Response>> listAll(){
         List<Incident> incidents = incidentService.listIncident();
         return ResponseEntity.ok(IncidentMapper.listDto(incidents));
@@ -87,7 +89,9 @@ public class IncidentController {
                     @ApiResponse(responseCode = "404", description = "Incidente não encontrado.", content = @Content(mediaType = "application/json", schema = @Schema(implementation = IncidentDto.Response.class)))
             }
     )
+
     @GetMapping("/{id}")
+    @PreAuthorize("hasRole('ADMIN') or (hasRole('USER') or #id == authentication.principal.getId())")
     public ResponseEntity<IncidentDto.Response> searchIncidentId (@PathVariable UUID id) {
         Incident incident = incidentService.searchById(id);
         return ResponseEntity.ok(IncidentMapper.toResponseDto(incident));
