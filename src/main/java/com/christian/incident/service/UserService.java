@@ -27,6 +27,7 @@ public class UserService {
     if(userRepository.existsByEmail(user.getEmail())){
         throw new EmailAlreadyExistsException("Email already registered!");
     }
+    user.setRole(user.getRole());
     user.setPassword(passwordEncoder.encode(user.getPassword()));
         return userRepository.save(user);
     }

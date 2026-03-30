@@ -25,7 +25,7 @@ public class IncidentService {
     private final UserRepository userRepository;
 
     @Transactional
-    public Incident updateStatus(UUID id, IncidentStatus newStatus) {
+    public void updateStatus(UUID id, IncidentStatus newStatus) {
         Incident incident = incidentRepository.findById(id).orElseThrow(
                 () -> new EntityNotFoundException("Incident not found")
         );
@@ -33,10 +33,15 @@ public class IncidentService {
         if (incident.getStatus() == newStatus) {
             throw new IllegalStateException("An incident with this status already exists.");
         }
-        incident.setStatus(newStatus);
-        return incident;
-    }
+        if(IncidentStatus.RESOLVED.equals(newStatus)){
+            incidentRepository.delete(incident);
+            return;
+        }
 
+        incident.setStatus(newStatus);
+        incidentRepository.save(incident);
+    }
+    
     @Transactional
     public Incident save(IncidentDto.Create dto){
         User user = userRepository.findById(dto.userId()).orElseThrow(
