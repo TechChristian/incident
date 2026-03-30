@@ -56,9 +56,8 @@ public class UserController {
         return ResponseEntity.noContent().build();
     }
 
-
     @GetMapping("/{id}")
-    @PreAuthorize("hasRole('ADMIN')")
+    @PreAuthorize("hasRole('ADMIN') OR (hasRole('USER') AND #id == authentication.principal.id)")
     public ResponseEntity<UserDto.Response> searchUser (@PathVariable UUID id){
           User user = userService.searchUserById(id);
           return
