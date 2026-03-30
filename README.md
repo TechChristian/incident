@@ -4,6 +4,14 @@ API REST para gerenciamento de incidentes, desenvolvida com Java 21 e Spring Boo
 
 Projeto focado em boas práticas de arquitetura em camadas, Docker e persistência com MySQL.
 
+## Em desenvolvimento
+
+* Implementação de autenticação e autorização com JWT
+* Controle de acesso baseado em roles (USER / ADMIN)
+* Refatoração dos testes automatizados
+* Documentação da API com Swagger (OpenAPI)
+
+
 ### Tecnologias
 
 ![Java 21](https://img.shields.io/badge/Java_21-2D2D2D?style=flat&logo=openjdk&logoColor=white)
