@@ -1,6 +1,7 @@
 package com.christian.incident.config;
 
 
+import com.christian.incident.Jwt.JwtAuthenticationEntryPoint;
 import com.christian.incident.Jwt.JwtAuthorizationFilter;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -26,7 +27,7 @@ public class SpringSecurityConfig {
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity htpp) throws Exception{
         return htpp
-                .csrf(csrf -> csrf.disable()) // não necessario na aplicação porque não é utilizado cookies.
+                .csrf(csrf -> csrf.disable())
                 .formLogin(form -> form.disable())
                 .httpBasic(basic -> basic.disable())
                 .authorizeHttpRequests(
@@ -37,7 +38,8 @@ public class SpringSecurityConfig {
                 ).sessionManagement(
                         session -> session.sessionCreationPolicy(
                                 SessionCreationPolicy.STATELESS)).addFilterBefore(jwtAuthorizationFilter(), UsernamePasswordAuthenticationFilter.class
-                        ).build();
+                        ).exceptionHandling(ex -> ex.authenticationEntryPoint(new JwtAuthenticationEntryPoint())
+                ).build();
     }
 
     @Bean
