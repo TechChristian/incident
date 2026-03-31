@@ -38,6 +38,7 @@ public class UserController {
         return
                 ResponseEntity.ok(UserMapper.listDto(users));
     }
+
     @PatchMapping("/{id}")
     public ResponseEntity<MessageResponseDto> updateInfo (@PathVariable UUID id, @Valid @RequestBody UserDto.Update dto){
         userService.updatePartial(id, dto);
@@ -46,6 +47,7 @@ public class UserController {
                         "Your info has been sucessfullly updated."
                 ));
     }
+
     @PatchMapping("/{id}/password")
     public ResponseEntity<MessageResponseDto> updatePassword (@PathVariable UUID id, @Valid @RequestBody UserDto.UpdatePassword dto){
         userService.updatePassword(
@@ -58,7 +60,7 @@ public class UserController {
     }
 
     @GetMapping("/{id}")
-    @PreAuthorize("hasRole('ADMIN') or (hasRole('USER') or #id == authentication.principal.getId())")
+    @PreAuthorize("hasRole('ADMIN') or (hasRole('USER') and #id == authentication.principal.getId())")
     public ResponseEntity<UserDto.Response> searchUser (@PathVariable UUID id){
           User user = userService.searchUserById(id);
           return
